@@ -1,11 +1,11 @@
-import core.rules.suit_only_rules.SuitOnlyRules as SuitOnlyRules
-import core.rules.value_only_rules.ValueOnlyRules as ValueOnlyRules
-import core.rules.value_and_suit_rules.ValueAndSuitRules as ValueAndSuitRules
+from core.rules.suit_only_rules import SuitOnlyRules
+from core.rules.value_only_rules import ValueOnlyRules
+from core.rules.value_and_suit_rules import ValueAndSuitRules
 
 RULES = {
-	"suit": lambda: SuitOnlyRules(),
-	"value": lambda: ValueOnlyRules(),
-	"both": lambda: ValueAndSuitRules()
+	"suit": SuitOnlyRules(),
+	"value": ValueOnlyRules(),
+	"both": ValueAndSuitRules()
 }
 
 def getRulesFromInput(ruleType):
