@@ -6,16 +6,22 @@ import service.player_service as playerService
 import service.rules_service as ruleService
 
 def getNumberOfDecks():
-	return raw_input("How many decks would you like to play with? ")
+	try:
+		return int(raw_input("How many decks would you like to play with? "))
+	except ValueError:
+		return -1
 
 def getNumberOfPlayers():
-	return raw_input("How many players would you like to play with (max 10)? ")
+	try:
+		return int(raw_input("How many players would you like to play with (max 10)? "))
+	except:
+		return -1
 
 def getGameRules():
 	return raw_input("Which rules of the game would you like to play (" + ", ".join(ruleService.RULES.keys()) + ")? ")
 
 def main():
-	print "Welcome to digital Snap!\n\n"
+	print "Welcome to digital Snap!\n"
 
 	# Request number of decks
 	numberOfDecks = getNumberOfDecks()
@@ -32,7 +38,7 @@ def main():
 	# Request number of players
 	gameRules = ruleService.getRulesFromInput(getGameRules())
 	while gameRules is None:
-		print "Please choose from the following:\n " + "\n".join(ruleService.RULES.keys())
+		print "Please choose from the following:\n" + "\n".join(ruleService.RULES.keys())
 		gameRules = ruleService.getRulesFromInput(getGameRules())
 
 	# Start the simulation
