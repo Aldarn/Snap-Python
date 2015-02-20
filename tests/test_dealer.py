@@ -1,13 +1,12 @@
 #!/usr/bin/python2.7
 
 import unittest
-import os
 from core.dealer import getDeck
 
 class TestDealer(unittest.TestCase):
 	def testDeckIsFull(self):
 		numberOfPacks = 1
-		deck = getDeck(numberOfPacks, shuffled = False)
+		deck = getDeck(numberOfPacks)
 		self.failUnlessEqual(len(deck), 52)
 
 	def testMultiplePacks(self):
