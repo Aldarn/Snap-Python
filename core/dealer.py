@@ -1,8 +1,7 @@
 import random
 import itertools
 
-SUITS = 'hdcs'
-VALUES = 'A23456789TJQK'
+from domain.card import Card
 
 def getDeck(numberOfPacks, shuffled = True):
 	"""
@@ -17,6 +16,9 @@ def getDeck(numberOfPacks, shuffled = True):
 	"""
 	deck = []
 	for n in range(numberOfPacks):
-		deck.extend([''.join(card) for card in itertools.product(VALUES, SUITS)])
+		deck.extend([Card(''.join(card)) for card in itertools.product(Card.VALUES.keys(), Card.SUITS.keys())])
 
-	return random.shuffle(deck) if shuffled else deck
+	if shuffled:
+		random.shuffle(deck)
+
+	return deck
