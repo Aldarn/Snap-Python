@@ -59,7 +59,7 @@ def main():
 
 	# Request number of players
 	numberOfPlayers = commandLineArguments.numberOfPlayers \
-		if playerService.isValidNumberOfPacks(commandLineArguments.numberOfPlayers) else getNumberOfPlayers()
+		if playerService.isValidNumberOfPlayers(commandLineArguments.numberOfPlayers) else getNumberOfPlayers()
 
 	# Request number of players
 	gameRules = commandLineArguments.gameRules if commandLineArguments.gameRules is not None else getGameRules()
