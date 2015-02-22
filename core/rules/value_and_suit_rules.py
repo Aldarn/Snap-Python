@@ -1,12 +1,10 @@
-from core.rules.game_rules import GameRules
 from core.rules.suit_only_rules import SuitOnlyRules
 from core.rules.value_only_rules import ValueOnlyRules
 
-class ValueAndSuitRules(GameRules):
+class ValueAndSuitRules(SuitOnlyRules, ValueOnlyRules):
 	def __init__(self):
-		super(ValueAndSuitRules, self).__init__()
-		self.suitOnlyRules = SuitOnlyRules()
-		self.valueOnlyRules = ValueOnlyRules()
+		SuitOnlyRules.__init__(self)
+		ValueOnlyRules.__init__(self)
 
 	def isSnap(self, card, otherCard):
 		"""
@@ -19,4 +17,4 @@ class ValueAndSuitRules(GameRules):
 		:return:
 			True if the cards snap under either of the other two rules, false otherwise.
 		"""
-		return self.suitOnlyRules.isSnap(card, otherCard) or self.valueOnlyRules.isSnap(card, otherCard)
+		return SuitOnlyRules.isSnap(self, card, otherCard) or ValueOnlyRules.isSnap(self, card, otherCard)
