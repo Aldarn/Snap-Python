@@ -1,15 +1,22 @@
 Installation
 ------------
 
-First install Python 2.7 and pip.
+Install Python 2.7.
 
-This game of snap requires the following additional libraries to be installed:
+That's it.
 
-	pip install enum34
+Running the Simulation
+----------------------
+
+Execute the following from a command line interface when the current directory is the
+same as the one this file is in:
+
+./simulation.py
 
 Tests
 -----
 
-Run the following command from this or the tests directory to run all the tests:
+To run all the tests, execute the following from a command line interface when the
+current directory is the same as the one this file is in or the tests directory:
 
 	python -m unittest discover tests

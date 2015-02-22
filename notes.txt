@@ -1,0 +1,29 @@
+How I thought the test went
+---------------------------
+
+- fine & fun
+
+- decided to include different types of players to make it more interesting
+
+- decided to allow multiple players and decide the winner based on response time
+
+- players hold the card objects they won even though no operations are done on these cards, thus a simple integer count
+would have sufficed. If the game was extended to be more complicated or have a graphical element this may have had more use.
+
+It could be argued that my solution is over engineered given the scope of the game, however I wanted to demonstrate
+how one may go about architecting the game assuming it would see significant usage potentially requiring maintenance
+and upgrades in the future.
+
+What I would do different with more time
+----------------------------------------
+
+- handle draws correctly
+- players that mis-snap are arbitrarily penalized, it would be better if this was elaborated on, although in the full
+game it would make more sense
+- fuller rules of snap
+- more tests
+- implement ui
+- implement human players
+- package the app
+- command line arguments / entering numbers is clunky; invalid command line arguments just ask for another number
+instead of indicating their invalidness
