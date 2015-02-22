@@ -67,3 +67,9 @@ class Player(object):
 	@snapResponseTime.setter
 	def snapResponseTime(self, snapResponseTime):
 		self._snapResponseTime = snapResponseTime
+
+	def __str__(self):
+		return "%s" % self.name
+
+	def __repr__(self):
+		return "Player(%s)" % self.name
