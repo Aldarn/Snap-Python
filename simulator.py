@@ -56,7 +56,7 @@ def main():
 	# Get any command line arguments supplied
 	commandLineArguments = getCommandLineArguments()
 
-	# Request number of decks
+	# Request number of packs
 	numberOfPacks = commandLineArguments.numberOfPacks \
 		if cardService.isValidNumberOfPacks(commandLineArguments.numberOfPacks) else getNumberOfPacks()
 
@@ -64,7 +64,7 @@ def main():
 	numberOfPlayers = commandLineArguments.numberOfPlayers \
 		if playerService.isValidNumberOfPlayers(commandLineArguments.numberOfPlayers) else getNumberOfPlayers()
 
-	# Request number of players
+	# Request game rules
 	gameRules = commandLineArguments.gameRules if commandLineArguments.gameRules is not None else getGameRules()
 
 	# Start the simulation
