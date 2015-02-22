@@ -1,12 +1,12 @@
 import abc
-import core.game as game
 
 class Player(object):
 	__metaclass__ = abc.ABCMeta
 
 	def __init__(self, name):
-		self.name = name
+		self._name = name
 		self._snapResponseTime = -1
+		self._cards = []
 
 	@abc.abstractmethod
 	def doMove(self, isSnap):
@@ -20,9 +20,45 @@ class Player(object):
 		"""
 		return
 
-	#####################
-	# 	  Properties	#
-	#####################
+	def addCards(self, cards):
+		"""
+		Adds the given cards to the players hand.
+
+		:param cards:
+			The cards to add.
+		"""
+		self._cards.extend(cards)
+
+	def removeCards(self, count):
+		"""
+		Removes a given number of cards from the players hand.
+
+		:param count:
+			The number of cards to remove.
+		"""
+		try:
+			del self._cards[-count]
+		except IndexError:
+			self.resetHand()
+
+	def getCardCount(self):
+		"""
+		Gets the number of cards in the players hand.
+
+		:return:
+			Number of cards in the players hand.
+		"""
+		return len(self._cards)
+
+	def resetHand(self):
+		"""
+		Empties the list of cards in this players hand.
+		"""
+		del self._cards[:]
+
+	@property
+	def name(self):
+		return self._name
 
 	@property
 	def snapResponseTime(self):

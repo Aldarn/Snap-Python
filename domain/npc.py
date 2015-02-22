@@ -1,4 +1,3 @@
-import core.game as game
 import random
 from player import Player
 
@@ -7,7 +6,7 @@ class NPC(Player):
 	maxResponseTime = 3.0
 
 	def __init__(self, stats):
-		super(Player, self).__init__()
+		super(NPC, self).__init__(stats["name"])
 		self._speed = stats["speed"]
 		self._accuracy = stats["accuracy"]
 
@@ -30,3 +29,9 @@ class NPC(Player):
 	@property
 	def accuracy(self):
 		return self._accuracy
+
+	def __str__(self):
+		return "%s (Speed: %s, Accuracy: %s)" % (self.name, self.speed, self.accuracy)
+
+	def __repr__(self):
+		return "NPC(%s, %s, %s)" % (self.name, self.speed, self.accuracy)
