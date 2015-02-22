@@ -1,6 +1,6 @@
 #!/usr/bin/python2.7
 
-import core.game as game
+from core.game import Game
 import service.card_service as cardService
 import service.player_service as playerService
 import service.rules_service as ruleService
@@ -38,9 +38,12 @@ def getGameRules():
 
 def getCommandLineArguments():
 	parser = argparse.ArgumentParser(description="Play a game of Snap!")
-	parser.add_argument("-p", "--packs", type = int, dest = "numberOfPacks", default = 0, help = "The number of packs to play with.")
-	parser.add_argument("-pl", "--players", type = int, dest = "numberOfPlayers", default = 0, help = "The number of players to play with.")
-	parser.add_argument("-r", "--rules", type = str, dest = "gameRules", default = None, help = "The rules to play with.")
+	parser.add_argument("-p", "--packs", type = int, dest = "numberOfPacks",
+		default = 0, help = "The number of packs to play with.")
+	parser.add_argument("-pl", "--players", type = int, dest = "numberOfPlayers",
+		default = 0, help = "The number of players to play with.")
+	parser.add_argument("-r", "--rules", type = str, dest = "gameRules", default = None,
+		choices = ruleService.RULES.keys(), help = "The rules to play with.")
 
 	args = parser.parse_args()
 	if args.gameRules is not None:
@@ -65,7 +68,8 @@ def main():
 	gameRules = commandLineArguments.gameRules if commandLineArguments.gameRules is not None else getGameRules()
 
 	# Start the simulation
-	game.start(numberOfPacks, playerService.getNPCs(numberOfPlayers), gameRules)
+	game = Game(numberOfPacks, playerService.getNPCs(numberOfPlayers), gameRules)
+	game.run()
 
 if __name__ == '__main__':
 	main()
