@@ -5,11 +5,11 @@ class Game(object):
 		"""
 		Initializes the game and begins the match.
 
-		:param deck:
-			The deck.
+		:param numberOfPacks:
+			The number of packs to use.
 		:param players:
 			The players.
-		:param gameRules:
+		:param rules:
 			The game rules.
 		"""
 		self.numberOfPacks = numberOfPacks
