@@ -60,10 +60,14 @@ def processSnap():
 	"""
 	# Find the player that snapped the fastest
 	# TODO: Handle draws
-	winningPlayer = max(PLAYERS, key = lambda player: player.snapResponseTime)
+	winningPlayer = min(PLAYERS, key = lambda player: player.snapResponseTime)
+
+	if winningPlayer.name == "Hulk":
+		print "HULK SNAP!!!"
+	else:
+		print "%s won the snap!" % winningPlayer
 
 	# Hand out the pot
-	print "%s won the snap!" % winningPlayer
 	winningPlayer.addCards(POT)
 	del POT[:]
 
@@ -92,6 +96,9 @@ def checkRematch():
 		# Reset the hands of each player
 		for player in PLAYERS:
 			player.resetHand()
+
+		# Empty the pot
+		del POT[:]
 
 		# Start the new game
 		start(NUMBER_OF_PACKS, PLAYERS, RULES)
