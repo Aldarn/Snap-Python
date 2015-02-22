@@ -20,18 +20,9 @@ def getDeck(numberOfPacks, shuffled = True):
 		deck.extend([Card(card[0], card[1]) for card in itertools.product(VALUES.keys(), SUITS.keys())])
 
 	if shuffled:
-		shuffle(deck)
+		random.shuffle(deck)
 
 	return deck
-
-def shuffle(deck):
-	"""
-	Shuffles the deck.
-
-	:param deck:
-		The deck to shuffle.
-	"""
-	random.shuffle(deck)
 
 def isValidNumberOfPacks(numberOfPacks):
 	"""
