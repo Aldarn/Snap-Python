@@ -1,9 +1,9 @@
 #!/usr/bin/python2.7
 
 import unittest
-from core.dealer import getDeck
+from service.card_service import getDeck
 
-class TestDealer(unittest.TestCase):
+class TestCards(unittest.TestCase):
 	def testDeckIsFull(self):
 		numberOfPacks = 1
 		deck = getDeck(numberOfPacks)

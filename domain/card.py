@@ -16,7 +16,7 @@ class Card(object):
 		"7": "Seven",
 		"8": "Eight",
 		"9": "Nine",
-		"t": "Then",
+		"t": "Ten",
 		"j": "Jack",
 		"q": "Queen",
 		"k": "King"
