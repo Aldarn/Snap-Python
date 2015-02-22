@@ -37,7 +37,7 @@ class Player(object):
 			The number of cards to remove.
 		"""
 		try:
-			del self._cards[-count]
+			del self._cards[-count:]
 		except IndexError:
 			self.resetHand()
 
