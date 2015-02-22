@@ -9,8 +9,10 @@ class ValueOnlyRules(GameRules):
 		Checks if two cards have the same value and thus a snap.
 
 		:param card:
+			First card.
 		:param otherCard:
+			Second card.
 		:return:
+			True if both cards have the same value, false otherwise.
 		"""
-		# TODO
-		return True
+		return card.value == otherCard.value

@@ -9,8 +9,10 @@ class SuitOnlyRules(GameRules):
 		Checks if two cards have the same suit and thus a snap.
 
 		:param card:
+			First card.
 		:param otherCard:
+			Second card.
 		:return:
+			True if both cards have the same suit, false otherwise.
 		"""
-		# TODO
-		return True
+		return card.suit == otherCard.suit

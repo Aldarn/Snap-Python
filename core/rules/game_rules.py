@@ -1,5 +1,4 @@
 import abc
-import core.game as game
 
 class GameRules(object):
 	__metaclass__ = abc.ABCMeta
