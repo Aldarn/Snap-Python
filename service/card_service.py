@@ -1,6 +1,7 @@
 import random
 import itertools
 
+from domain.card_types import VALUES, SUITS
 from domain.card import Card
 
 def getDeck(numberOfPacks, shuffled = True):
@@ -16,7 +17,7 @@ def getDeck(numberOfPacks, shuffled = True):
 	"""
 	deck = []
 	for n in range(numberOfPacks):
-		deck.extend([Card(''.join(card)) for card in itertools.product(Card.VALUES.keys(), Card.SUITS.keys())])
+		deck.extend([Card(card[0], card[1]) for card in itertools.product(VALUES.keys(), SUITS.keys())])
 
 	if shuffled:
 		shuffle(deck)
