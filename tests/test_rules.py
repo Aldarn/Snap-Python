@@ -22,42 +22,42 @@ class TestRules(unittest.TestCase):
 
 	def testValueSnap(self):
 		valueRules = ValueOnlyRules()
-		card = Card("jh")
-		otherCard = Card("jc")
+		card = Card("j", "h")
+		otherCard = Card("j", "c")
 		self.failUnless(valueRules.isSnap(card, otherCard))
 
 	def testValueNoSnap(self):
 		valueRules = ValueOnlyRules()
-		card = Card("kh")
-		otherCard = Card("2h")
+		card = Card("k", "h")
+		otherCard = Card("2", "h")
 		self.failIf(valueRules.isSnap(card, otherCard))
 
 	def testSuitSnap(self):
 		suitRules = SuitOnlyRules()
-		card = Card("td")
-		otherCard = Card("6d")
+		card = Card("t", "d")
+		otherCard = Card("6", "d")
 		self.failUnless(suitRules.isSnap(card, otherCard))
 
 	def testSuitNoSnap(self):
 		suitRules = SuitOnlyRules()
-		card = Card("3s")
-		otherCard = Card("3c")
+		card = Card("3", "s")
+		otherCard = Card("3", "c")
 		self.failIf(suitRules.isSnap(card, otherCard))
 
 	def testBothSnap(self):
 		bothRules = ValueAndSuitRules()
-		card = Card("kd")
-		otherCard = Card("kc")
-		card2 = Card("7s")
-		otherCard2 = Card("as")
+		card = Card("k", "d")
+		otherCard = Card("k", "c")
+		card2 = Card("7", "s")
+		otherCard2 = Card("a", "s")
 
 		self.failUnless(bothRules.isSnap(card, otherCard))
 		self.failUnless(bothRules.isSnap(card2, otherCard2))
 
 	def testBothNoSnap(self):
 		bothRules = ValueAndSuitRules()
-		card = Card("qc")
-		otherCard = Card("as")
+		card = Card("q", "c")
+		otherCard = Card("a", "s")
 		self.failIf(bothRules.isSnap(card, otherCard))
 
 def main():
