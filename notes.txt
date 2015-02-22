@@ -1,29 +1,44 @@
 How I thought the test went
 ---------------------------
 
-- fine & fun
+The test went well and it was fun to do!
 
-- decided to include different types of players to make it more interesting
+I decided to allow multiple players to play in a single game, more true to the original rules of Snap. Choosing the
+winner has also been modified to be based on response time rather than a coin toss. This handles > 2 players better
+and also allowed me to include different types of players with varying speeds. I also introduced an accuracy stat
+for players which means in the case where there is no snap, they may still incorrectly call a snap, incurring a
+2 card penalty. Overall this made the game a little more interesting, fun and less binary.
 
-- decided to allow multiple players and decide the winner based on response time
-
-- players hold the card objects they won even though no operations are done on these cards, thus a simple integer count
-would have sufficed. If the game was extended to be more complicated or have a graphical element this may have had more use.
-
-It could be argued that my solution is over engineered given the scope of the game, however I wanted to demonstrate
-how one may go about architecting the game assuming it would see significant usage potentially requiring maintenance
-and upgrades in the future.
+With regards to my implementation, i'm more or less happy with how it turned out. It could be argued that my solution
+is over engineered given the scope of the game, however I wanted to demonstrate how one may go about architecting
+the game assuming it would see significant usage potentially requiring maintenance and upgrades in the future.
 
 What I would do different with more time
 ----------------------------------------
 
-- handle draws correctly
-- players that mis-snap are arbitrarily penalized, it would be better if this was elaborated on, although in the full
-game it would make more sense
-- fuller rules of snap
-- more tests
-- implement ui
-- implement human players
-- package the app
-- command line arguments / entering numbers is clunky; invalid command line arguments just ask for another number
-instead of indicating their invalidness
+Originally I had planned to implement the full rules of Snap, including a GUI for playing the game and allowing human
+players to join in. This can be seen by the fact that I created a base Player class and an NPC subclass, which would
+have easily allowed for a human subclass too. Players also hold the card objects they have won, even though no
+operations are done on these cards, thus a simple integer count would have sufficed; if the game had followed the full
+rules of snap or had a GUI then this would have had more use.
+
+Ultimately (as I had suspected) this turned out to be beyond the scope of the test in terms of both requirements
+and time constraints. There are also a few other aspects that I would have liked to improve given more time:
+
+* When two players snap at the same time the winner is chosen arbitrarily. Draws should have been handled
+in a better way, such as with a sudden death match between the two players.
+
+* Players that mis-snap are arbitrarily penalized.
+
+* Although I did write tests for most of the key functionality, they are not exhaustive. I would also have liked to
+implement some tests using mocking in order to verify specific methods were being called correctly. In particular the
+way I designed the game class to chain functionality between different game states automatically made it difficult
+to test; this should be improved to have a separate arbiter control the game loop and feed the results from each
+state into the next.
+
+* Packaging of the application.
+
+* Improving the user input via command line arguments and prompts. Currently this code feels a little clunky, and
+invalid command line arguments just ask for another number instead of indicating to the user why the value entered
+was invalid.
+
