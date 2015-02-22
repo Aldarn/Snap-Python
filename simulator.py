@@ -20,7 +20,7 @@ def getNumberOfPacks():
 def getNumberOfPlayers():
 	try:
 		numberOfPlayers = int(raw_input("How many players would you like to play with (max 10)? "))
-		if not playerService.isValidNumberOfPacks(numberOfPlayers):
+		if not playerService.isValidNumberOfPlayers(numberOfPlayers):
 			raise ValueError("Invalid number of players chosen.")
 		return numberOfPlayers
 	except ValueError:
