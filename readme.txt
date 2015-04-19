@@ -1,3 +1,8 @@
+About
+-----
+
+A command line simulation of a simplified version of the game Snap!, featuring all your favourite super hero characters.
+
 Installation
 ------------
 
